@@ -99,6 +99,9 @@ namespace SixLabors.ImageSharp.Textures.PixelFormats
         }
 
         /// <inheritdoc/>
+        public void FromAbgr32(Abgr32 source) => throw new System.NotImplementedException();
+
+        /// <inheritdoc/>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public void FromBgra5551(Bgra5551 source) => this.FromScaledVector4(source.ToScaledVector4());
 

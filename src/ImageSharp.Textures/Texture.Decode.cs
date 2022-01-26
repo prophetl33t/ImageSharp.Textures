@@ -2,10 +2,12 @@
 // Licensed under the Apache License, Version 2.0.
 
 using System;
+using System.Buffers;
 using System.IO;
 using System.Linq;
 using SixLabors.ImageSharp.Memory;
 using SixLabors.ImageSharp.Textures.Formats;
+using Microsoft.Toolkit.HighPerformance;
 
 namespace SixLabors.ImageSharp.Textures
 {
@@ -30,9 +32,9 @@ namespace SixLabors.ImageSharp.Textures
                 return null;
             }
 
-            using IManagedByteBuffer buffer = config.MemoryAllocator.AllocateManagedByteBuffer(headerSize, AllocationOptions.Clean);
+            using IMemoryOwner<byte> buffer = ImageSharp.Configuration.Default.MemoryAllocator.Allocate<byte>(headerSize, AllocationOptions.Clean);
             long startPosition = stream.Position;
-            stream.Read(buffer.Array, 0, headerSize);
+            stream.Read(buffer.Memory.Span);
             stream.Position = startPosition;
 
             // Does the given stream contain enough data to fit in the header for the format
