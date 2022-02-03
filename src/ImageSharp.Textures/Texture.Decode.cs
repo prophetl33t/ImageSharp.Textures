@@ -5,9 +5,9 @@ using System;
 using System.Buffers;
 using System.IO;
 using System.Linq;
+using Microsoft.Toolkit.HighPerformance;
 using SixLabors.ImageSharp.Memory;
 using SixLabors.ImageSharp.Textures.Formats;
-using Microsoft.Toolkit.HighPerformance;
 
 namespace SixLabors.ImageSharp.Textures
 {

@@ -415,6 +415,7 @@ namespace SixLabors.ImageSharp.Textures.Formats.Dds
                     return this.AllocateMipMaps<Rgb96>(stream, width, height, count);
                 case DxgiFormat.R16G16B16A16_Typeless:
                 case DxgiFormat.R16G16B16A16_Float:
+                    return this.AllocateMipMaps<Rgba64Float>(stream, width, height, count);
                 case DxgiFormat.R16G16B16A16_UNorm:
                 case DxgiFormat.R16G16B16A16_UInt:
                 case DxgiFormat.R16G16B16A16_SNorm:
