@@ -12,6 +12,7 @@
     <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
     <PackageTags>Texture Surface BASIS DDS KTX KTX2 ETC1 ETC2 DXT1 DXT3 DXT5 BC5 BC6 BC7</PackageTags>
     <Description>A texture loading and manipulation library; written in C#</Description>
+    <TargetFramework>net5.0</TargetFramework> 
   </PropertyGroup>
 
   <Choose>
@@ -20,20 +21,17 @@
         <TargetFrameworks>net5.0;netcoreapp3.1;netcoreapp2.1;netstandard2.1;netstandard2.0;netstandard1.3;net472</TargetFrameworks>
       </PropertyGroup>
     </When>
-    <Otherwise>
-      <PropertyGroup>
-        <TargetFrameworks>net5.0;netstandard2.0;netstandard2.1</TargetFrameworks>
-      </PropertyGroup>
-    </Otherwise>
+    <Otherwise />
   </Choose>
 
   <ItemGroup>
     <None Include="..\..\shared-infrastructure\branding\icons\imagesharp.textures\sixlabors.imagesharp.textures.128.png" Pack="true" PackagePath="" />
+    <None Remove="obj\**" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Toolkit.HighPerformance" Version="7.1.2" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="2.0.0-alpha.0.161" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="2.0.0" />
 
     <!--TODO: Upgrade version in ImageSharp-->
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="5.0.0" />
@@ -57,6 +55,14 @@
 
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="obj\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="obj\**" />
   </ItemGroup>
 
   <Import Project="..\..\shared-infrastructure\src\SharedInfrastructure\SharedInfrastructure.projitems" Label="Shared" />
